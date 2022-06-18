@@ -1,0 +1,16 @@
+fire
+pydantic
+requests
+loguru
+orator
+psycopg2
+tweepy
+python-dotenv
+pytest
+pytest-mock
+pytest-cov
+
+# コーディングスタイル関連
+pep8
+flake8
+pylint
