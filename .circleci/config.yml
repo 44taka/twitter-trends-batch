@@ -22,8 +22,8 @@ jobs:
       - run:
           name: Waiting Start DB
           command: | 
+            sleep 30s
             docker-compose ps
-            sleep 15s
       - run:
           name: Run DB Migration And Seed
           command: | 
