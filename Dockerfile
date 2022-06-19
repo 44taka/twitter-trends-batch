@@ -5,7 +5,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # ログ設定(loguruのデフォルト設定)周り
-# ENV LOGURU_LEVEL="INFO"
+ENV LOGURU_LEVEL="INFO"
 
 RUN mkdir /app
 COPY requirements.txt /app/

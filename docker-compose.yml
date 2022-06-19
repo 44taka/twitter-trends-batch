@@ -10,7 +10,6 @@ services:
       - ./app:/app
     tty:
       true
-  # front: TODO
   postgres:
     image: postgres:14.3
     container_name: twitter-trends-batch.postgres
@@ -25,7 +24,7 @@ services:
       - ./postgres/init:/docker-entrypoint-initdb.d
   postgres-test:
     image: postgres:14.3
-    container_name: twitter-trends-docker.postgres-test
+    container_name: twitter-trends-batch.postgres-test
     environment:
       TZ: Asia/Tokyo
       POSTGRES_USER: docker
