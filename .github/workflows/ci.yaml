@@ -14,10 +14,10 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
       - name: Create .env file
-        env: 
-          TEST_ENV: ${{ secrets.CI_ACTOINS.TEST_ENV }}
+        # env: 
+        #   TEST_ENV: ${{ secrets.CI_ACTOINS.TEST_ENV }}
         run: |
-          echo $TEST_ENV | base64 -di > .env
+          echo ${{ secrets.CI_ACTOINS.TEST_ENV }} | base64 -di > .env
           mv .env ./app
       - name: Check env
         run: |
