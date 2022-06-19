@@ -24,6 +24,11 @@ jobs:
           command: | 
             sleep 15s
       - run:
+          name: Run DB Migration And Seed
+          command: | 
+            docker-compose exec -T app /bin/bash -c cd /app/migrate && orator migrate -f
+            docker-compose exec -T app /bin/bash -c cd /app/migrate && orator db:seed -f
+      - run:
           name: Run App Test
           command: | 
             docker-compose exec -T app pytest
