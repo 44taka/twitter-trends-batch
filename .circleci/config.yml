@@ -19,6 +19,10 @@ jobs:
           command: |
             docker-compose up -d
       - run:
+          name: Waiting Start DB
+          command: | 
+            sleep 15s
+      - run:
           name: Run App Test
           command: | 
             docker-compose exec -T app pytest
