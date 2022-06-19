@@ -11,9 +11,6 @@ jobs:
           command: | 
             echo $TEST_ENV | base64 -di > .env
             sudo mv .env ./app
-            ls -la
-            cd ./app
-            ls -la
       - run:
           name: Build App Container
           command: | 
@@ -25,6 +22,7 @@ jobs:
       - run:
           name: Waiting Start DB
           command: | 
+            docker-compose ps
             sleep 15s
       - run:
           name: Run DB Migration And Seed
