@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v3
       - name: debug
         run: |
-          echo "key = ${{ secrets.DEMO_ENV }}"
+          echo "key = ${{ secrets.Actions.DEMO_ENV }}"
       # - name: Create .env file
       #   env: 
       #     # TEST_ENV: ${{ secrets.DEMO_ENV }}
