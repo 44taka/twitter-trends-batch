@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Create .env file
         run: |
-          echo ${{ secrets.DEMO_ENV }}
+          echo ${{ secrets.CI_ACTOINS.DEMO_ENV }}
       # - name: Run Container
       #   run: docker-compose up -d
       # - name: Run test
