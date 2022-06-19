@@ -10,8 +10,10 @@ jobs:
           name: Create .env file
           command: | 
             echo $TEST_ENV | base64 -di > .env
-            ls -la
             sudo mv .env ./app
+            ls -la
+            cd ./app
+            ls -la
       - run:
           name: Build App Container
           command: | 
