@@ -19,7 +19,11 @@ jobs:
         run: |
           echo $TEST_ENV | base64 -di > .env
           mv .env ./app
-      - name: Run Container
-        run: docker-compose up -d
-      - name: Run test
-        run: docker-compose exec -T app pytest
+      - name: Check env
+        run: |
+          cd ./app
+          ls -la
+      # - name: Run Container
+      #   run: docker-compose up -d
+      # - name: Run test
+      #   run: docker-compose exec -T app pytest
