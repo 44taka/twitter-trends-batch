@@ -13,6 +13,6 @@ jobs:
       - name: Build app container
         run: docker-compose build app
       - name: docker-compose up
-        run: docker-compose up
+        run: docker-compose up -d
       - name: Run test
         run: docker-compose exec app pytest
