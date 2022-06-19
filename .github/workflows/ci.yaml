@@ -14,9 +14,12 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
       - name: Create .env file
+        env: 
+          TEST_ENV: ${{ secrets.TEST_ENV }}
         run: |
-          echo ${{ secrets.CI_ACTOINS.DEMO_ENV }}
-      # - name: Run Container
-      #   run: docker-compose up -d
-      # - name: Run test
-      #   run: docker-compose exec -T app pytest
+          echo $TEST_ENV | base64 -di > .env
+          mv .env ./app
+      - name: Run Container
+        run: docker-compose up -d
+      - name: Run test
+        run: docker-compose exec -T app pytest
