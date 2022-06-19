@@ -16,8 +16,8 @@ jobs:
       - name: Create .env file
         env: 
           TEST_ENV: ${{ secrets.DEMO_ENV }}
-        # run: |
-        #   echo ${{ env.DEMO_ENV }} | base64 -di > ./app/.env
+        run: |
+          echo ${{ env.DEMO_ENV }} | base64 -di > ./app/.env
       - if: ${{ env.DEMO_ENV != '' }}
         run: echo 'This step will only run if the secret has a value set.'
       - if: ${{ env.TEST_ENV == '' }}
