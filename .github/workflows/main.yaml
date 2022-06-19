@@ -13,7 +13,7 @@ jobs:
       - name: Checkout docker repositoy
         uses: actions/checkout@v3
         with:
-          repositoy: 44taka/twitter-trends-docker
+          repository: 44taka/twitter-trends-docker
       - name: Check Directory
         run: ls -la
       - name: Run a one-line script
