@@ -10,11 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Checkout docker repositoy
-        uses: actions/checkout@v3
-        with:
-          repository: 44taka/twitter-trends-docker
-          path: /home/runner/work/twitter-trends-batch/
       - name: Check Directory
         run: ls -la
       - name: Run a one-line script
@@ -23,3 +18,5 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+      - name: Build app container
+        run: docker-compose build app
