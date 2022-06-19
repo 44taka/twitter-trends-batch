@@ -13,16 +13,19 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-      - name: Create .env file
-        env: 
-          # TEST_ENV: ${{ secrets.DEMO_ENV }}
-          DEMO_ENV: ${{ secrets.DEMO_ENV }}
+      - name: debug
         run: |
-          echo ${{ env.DEMO_ENV }} | base64 -di > ./app/.env
-      - if: ${{ env.DEMO_ENV != '' }}
-        run: echo 'This step will only run if the secret has a value set.'
-      - if: ${{ env.DEMO_ENV == '' }}
-        run: echo 'This step will only run if the secret does not have a value set.'
+          echo "key = ${{ secrets.DEMO_ENV }}"
+      # - name: Create .env file
+      #   env: 
+      #     # TEST_ENV: ${{ secrets.DEMO_ENV }}
+      #     DEMO_ENV: ${{ secrets.DEMO_ENV }}
+      #   run: |
+      #     echo ${{ env.DEMO_ENV }} | base64 -di > ./app/.env
+      # - if: ${{ env.DEMO_ENV != '' }}
+      #   run: echo 'This step will only run if the secret has a value set.'
+      # - if: ${{ env.DEMO_ENV == '' }}
+      #   run: echo 'This step will only run if the secret does not have a value set.'
       # - name: Check env
       #   run: |
       #     cd ./app
