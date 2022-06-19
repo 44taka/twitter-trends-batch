@@ -19,6 +19,10 @@ jobs:
         run: |
           echo ${{ env.TEST_ENV }} | base64 -di > .env
           mv .env ./app
+      - if: ${{ secrets.TEST_ENV != '' }}
+        run: echo 'This step will only run if the secret has a value set.'
+      - if: ${{ secrets.TEST_ENV == '' }}
+        run: echo 'This step will only run if the secret does not have a value set.'
       - name: Check env
         run: |
           cd ./app
