@@ -28,6 +28,7 @@ jobs:
       - run:
           name: Run DB Migration And Seed
           command: | 
+            docker-compose exec -T app /bin/bash -c "cat /app/.env"
             docker-compose exec -T app /bin/bash -c "cd /app/migrate && orator migrate -f"
             docker-compose exec -T app /bin/bash -c "cd /app/migrate && orator db:seed -f"
       - run:
