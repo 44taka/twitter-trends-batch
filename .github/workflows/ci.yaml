@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Create .env file
         env: 
-          TEST_ENV: ${{ secrets.TEST_ENV }}
+          TEST_ENV: ${{ secrets.CI_ACTOINS.TEST_ENV }}
         run: |
           echo $TEST_ENV | base64 -di > .env
           mv .env ./app
