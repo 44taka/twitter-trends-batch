@@ -1,0 +1,46 @@
+version: 2.1
+
+jobs:
+  build-and-test:
+    machine:
+      image: ubuntu-2204:2022.04.1
+    steps:
+      - checkout
+      - run:
+          name: Create .env file
+          command: | 
+            echo $TEST_ENV | base64 -di > .env
+            sudo mv .env ./app
+      - run:
+          name: Build App Container
+          command: | 
+            docker-compose build app
+      - run:
+          name: Run Docker Compose
+          command: |
+            docker-compose up -d
+      - run:
+          name: Waiting Start DB
+          command: | 
+            sleep 15s
+            docker-compose ps
+      - run:
+          name: Run DB Migration And Seed
+          command: | 
+            docker-compose exec -T app /bin/bash -c "cd /app/migrate && orator migrate -f"
+            docker-compose exec -T app /bin/bash -c "cd /app/migrate && orator db:seed -f"
+      - run:
+          name: Run App Test
+          command: | 
+            docker-compose exec -T app pytest
+
+workflows:
+  Build-And-Test:
+    jobs: 
+      - build-and-test:
+          filters:
+            branches:
+              only:
+                - /feature.*/
+              ignore:
+                - main
