@@ -20,19 +20,23 @@ jobs:
           command: |
             docker-compose up -d
       - run:
-          name: Waiting Start DB
-          command: | 
-            sleep 30s
-            docker-compose ps
-      - run:
-          name: Run DB Migration And Seed
-          command: | 
-            docker-compose exec -T app /bin/bash -c "cd /app/migrate && orator migrate -f"
-            docker-compose exec -T app /bin/bash -c "cd /app/migrate && orator db:seed -f"
-      - run:
-          name: Run App Test
-          command: | 
-            docker-compose exec -T app pytest
+          name: Check Directory
+          command: |
+            docker-compose exec -T app /bin/bash -c "cd /app && ls -la"
+      # - run:
+      #     name: Waiting Start DB
+      #     command: | 
+      #       sleep 30s
+      #       docker-compose ps
+      # - run:
+      #     name: Run DB Migration And Seed
+      #     command: | 
+      #       docker-compose exec -T app /bin/bash -c "cd /app/migrate && orator migrate -f"
+      #       docker-compose exec -T app /bin/bash -c "cd /app/migrate && orator db:seed -f"
+      # - run:
+      #     name: Run App Test
+      #     command: | 
+      #       docker-compose exec -T app pytest
 
 workflows:
   Build-And-Test:
