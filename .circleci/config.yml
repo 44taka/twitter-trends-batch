@@ -38,9 +38,9 @@ workflows:
   Build-And-Test:
     jobs: 
       - build-and-test
-           filters:
-             branches:
-               only:
-                 - /feature.*/
-               ignore:
-                 - main
+          filters:
+            branches:
+              only:
+                - /feature.*/
+              ignore:
+                - main
