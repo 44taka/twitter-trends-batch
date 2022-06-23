@@ -1,9 +1,6 @@
 from pydantic import BaseSettings
 
 
-ENV_FILE = '/app/.env'
-
-
 class PostgresSettings(BaseSettings):
     """PostgresSQLの設定情報"""
     host: str
@@ -12,7 +9,6 @@ class PostgresSettings(BaseSettings):
     password: str
     
     class Config:
-        env_file = ENV_FILE
         env_file_encoding = 'utf-8'
         env_prefix = 'pgsql_'
 
@@ -25,9 +21,9 @@ class TwitterApiSettings(BaseSettings):
     access_token_secret: str
 
     class Config:
-        env_file = ENV_FILE
         env_file_encoding = 'utf-8'
         env_prefix = 'twitter_consumer_'
+
 
 class TestPostgresSettings(PostgresSettings):
     class Config:
