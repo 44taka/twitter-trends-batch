@@ -19,18 +19,18 @@ config = {
 db = DatabaseManager(config)
 
 # テストDBの接続情報読み込み
-test_pgsql_settings = TestPostgresSettings()
+# test_pgsql_settings = TestPostgresSettings()
 
 # 接続設定
-test_config = {
-    'pgsql': {
-        'driver': 'pgsql',
-        'host': test_pgsql_settings.host,
-        'database': test_pgsql_settings.database,
-        'user': test_pgsql_settings.user,
-        'password': test_pgsql_settings.password,
-        'prefix': ''
-    }
-}
+# test_config = {
+#     'pgsql': {
+#         'driver': 'pgsql',
+#         'host': test_pgsql_settings.host,
+#         'database': test_pgsql_settings.database,
+#         'user': test_pgsql_settings.user,
+#         'password': test_pgsql_settings.password,
+#         'prefix': ''
+#     }
+# }
 
-test_db = DatabaseManager(test_config)
+# test_db = DatabaseManager(test_config)
