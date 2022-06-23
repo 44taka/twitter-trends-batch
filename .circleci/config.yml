@@ -40,7 +40,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Create production .env file
+          name: Create prod .env file
           command: | 
             echo $PROD_ENV | base64 -di > .env
             sudo mv .env ./app
