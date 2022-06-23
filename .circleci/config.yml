@@ -34,6 +34,26 @@ jobs:
           command: | 
             docker-compose exec -T app pytest
 
+  deploy:
+    machine:
+      image: ubuntu-2204:2022.04.1
+    steps:
+      - checkout
+      - run:
+          name: Create prod .env file
+          command: | 
+            echo $PROD_ENV | base64 -di > .env
+            sudo mv .env ./app
+      - run:
+          name: Git remote remote dokku
+          command: | 
+            git remote add dokku dokku@dosankoweb.work:twitter-trends-batch
+      - run:
+          name: Git push dokku
+          command: | 
+            git push dokku main:master
+
+
 workflows:
   Build-And-Test:
     jobs: 
@@ -43,4 +63,12 @@ workflows:
               only:
                 - /feature.*/
               ignore:
+                - main
+
+  Deploy:
+    jobs: 
+      - deploy:
+          filters:
+            branches:
+              only:
                 - main
