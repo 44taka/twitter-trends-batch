@@ -55,15 +55,15 @@ jobs:
 
 
 workflows:
-  # Build-And-Test:
-  #   jobs: 
-  #     - build-and-test:
-  #         filters:
-  #           branches:
-  #             only:
-  #               - /feature.*/
-  #             ignore:
-  #               - main
+  Build-And-Test:
+    jobs: 
+      - build-and-test:
+          filters:
+            branches:
+              only:
+                - /feature.*/
+              ignore:
+                - main
 
   Deploy:
     jobs: 
@@ -71,6 +71,4 @@ workflows:
           filters:
             branches:
               only:
-                - /feature.*/
-              ignore:
                 - main
