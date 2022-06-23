@@ -7,11 +7,11 @@ ENV PYTHONUNBUFFERED 1
 # ログ設定(loguruのデフォルト設定)周り
 ENV LOGURU_LEVEL="INFO"
 
-RUN mkdir /app
-COPY requirements.txt /app/
+COPY requirements.txt ./
+COPY /app /app
 
 RUN pip install --upgrade pip
-RUN pip uninstall -r /app/requirements.txt
-RUN pip install -r /app/requirements.txt
+RUN pip uninstall -r requirements.txt
+RUN pip install -r requirements.txt
 
 WORKDIR /app
