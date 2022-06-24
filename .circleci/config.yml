@@ -46,7 +46,10 @@ jobs:
           name: Git push dokku
           command: | 
             git push dokku main:master
-
+      - run:
+          name: Run DB Migration
+          command: | 
+            ssh ${SERVER_USER}@${SERVER_HOST} 'dokku run twitter-trends-batch /bin/bash -c "cd /app/migrate && orator migrate -f"
 
 workflows:
   Build-And-Test:
