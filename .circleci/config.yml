@@ -49,7 +49,7 @@ jobs:
       - run:
           name: Run DB Migration
           command: | 
-            ssh ${SERVER_USER}@${SERVER_HOST} 'dokku run twitter-trends-batch /bin/bash -c "cd /app/migrate && orator migrate -f"
+            ssh ${SERVER_USER}@${SERVER_HOST} 'dokku run twitter-trends-batch /bin/bash -c "cd /app/migrate && orator migrate -f"'
 
 workflows:
   Build-And-Test:
