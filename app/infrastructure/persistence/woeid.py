@@ -15,7 +15,7 @@ class WoeIdPersistence(WoeIdRepository):
     def find_all(self) -> List[WoeIdModel]:
         try:
             result = self._db.table(WoeIdModel.Config.table_name).get()
-            if len(result) == 0: # TODO:ここのテストケースは別途検討する
+            if len(result) == 0:
                 logger.warning('woeid is not found.')
                 return []
             return list(map(WoeIdModel.parse_obj, result))

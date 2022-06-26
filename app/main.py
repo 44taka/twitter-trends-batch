@@ -15,7 +15,7 @@ from usecase.twitter.trends import TwitterTrendsUseCaseImpl
 class Main(object):
     
     # TODO:Twitter関連のCLIはグループ化してまとめたい。APIのルーティングみたいな感じでやりたい。
-    def twitter_trends(self):
+    def twitter_trends(self, woeid: int=None):
         logger.info('Twitterトレンド取得 START')
         # DI注入
         wip = WoeIdPersistence(db=db)
@@ -23,7 +23,7 @@ class Main(object):
         tuc = TwitterTrendsUseCaseImpl(wip=wip, ttp=ttp)
         ttc = TwitterTrendsCommand(tuc=tuc)
         # 処理実行
-        status = ttc.run()
+        status = ttc.run(woeid=woeid)
         logger.debug('status = ' + str(status))
         logger.info('Twitterトレンド取得 END')
         sys.exit(status)
