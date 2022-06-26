@@ -39,7 +39,10 @@ class TwitterTrendsUseCaseImpl(TwitterTrendsUseCase):
         return self._wip.find_all()
 
     def woeid_find_by_id(self, woeid: int) -> Optional[WoeIdModel]:
-        return self._wip.find_by_id(woeid=woeid)
+        result = self._wip.find_by_id(woeid=woeid)
+        if result is None:
+            raise Exception('Woeid not found')
+        return result
 
     def get(self, woeid: int) -> List[TwitterTrendsApiModel]:
         return self._ttp.find(woeid=woeid)

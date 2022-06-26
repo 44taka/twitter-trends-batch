@@ -34,13 +34,14 @@ class TestTwitterTrendsUseCaseImpl(object):
         assert result.name == expected.name
 
     @pytest.mark.parametrize('id, expected', [
-        (99999999, None),
-        (98765432, None),
-        (87898798, None),
+        (99999999, Exception),
+        (98765432, Exception),
+        (87898798, Exception),
     ])
     def test_failed_woeid_find_by_id(self, ttu: TwitterTrendsUseCaseImpl, id, expected):
-        result = ttu.woeid_find_by_id(woeid=id)
-        assert result == expected
+        with pytest.raises(expected) as e:
+            ttu.woeid_find_by_id(woeid=id)
+        assert str(e.value) == 'Woeid not found'
 
     def test_get(self, ttu: TwitterTrendsUseCaseImpl):
         result = ttu.get(woeid=23424856)

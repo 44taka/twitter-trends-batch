@@ -20,8 +20,9 @@ def ttc():
 
 class TestTwitterTrendsCommand(object):
     
-    def test_run(self, ttc: TwitterTrendsCommand):
-        result = ttc.run()
+    @pytest.mark.parametrize('woeid', [23424856, None])
+    def test_run(self, woeid: int, ttc: TwitterTrendsCommand):
+        result = ttc.run(woeid=woeid)
         assert result == 0
     
     @pytest.mark.parametrize('exception, expected', [
