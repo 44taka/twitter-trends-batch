@@ -11,7 +11,6 @@ class TwitterTrendsApiModel(BaseModel):
 
 
 class TwitterTrendsModel(TwitterTrendsApiModel):
-    # id: Optional[int]
     rank: int
     created_at: datetime = datetime.now()
     updated_at: datetime = datetime.now()

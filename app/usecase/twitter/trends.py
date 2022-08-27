@@ -27,8 +27,6 @@ class TwitterTrendsUseCase(ABC):
         raise NotImplementedError
 
 
-
-# TODO:エラーハンドリングが足りない気がする。
 class TwitterTrendsUseCaseImpl(TwitterTrendsUseCase):
     
     def __init__(self, wip: WoeIdPersistence, ttp: TwitterTrendsPersistence):

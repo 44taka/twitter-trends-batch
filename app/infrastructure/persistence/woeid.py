@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import List
 
 from loguru import logger
 from orator import DatabaseManager
